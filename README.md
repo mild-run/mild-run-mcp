@@ -118,6 +118,7 @@ mild.run exposes the following MCP tools. All require `mcp_token` as a parameter
 | `stripe_customer_delete` | Delete a Stripe customer after human approval |
 | `stripe_payout` | Create a Stripe payout after human approval |
 | `gmail_send_email` | Send a Gmail message after human approval |
+| `slack_post_message` | Post a Slack message after human approval |
 | `get_approval_status` | Check the status of a pending approval request |
 
 ---
