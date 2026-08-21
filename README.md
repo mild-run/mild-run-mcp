@@ -26,7 +26,7 @@ Telling the agent to "ask before acting" doesn't work — you're asking a non-de
 4. **Paste your MCP URL** into your agent platform:
 
 ```
-https://mcp.mild.run/sse?mcp_token=YOUR_TOKEN
+https://mcp.mild.run/mcp?mcp_token=YOUR_TOKEN
 ```
 
 That's it. Every sensitive action now requires your tap on Telegram before it fires.
@@ -52,12 +52,17 @@ Works with any MCP-compatible agent platform:
 
 - **base44** — paste the URL in one chat message
 - **Claude Desktop** — add to `claude_desktop_config.json`
+- **ChatGPT** — requires Developer Mode (Settings → Connectors), then add as a connector with no auth
 - **n8n** — add as an MCP node
 - **Cursor / Windsurf** — add to MCP settings
-- **Any MCP client** — standard SSE transport
+- **Any MCP client** — Streamable HTTP transport (`/mcp`)
+
+A legacy SSE endpoint (`/sse`) is still available for any client that hasn't
+moved to Streamable HTTP yet, but it's deprecated — new integrations should
+use the `/mcp` URL above.
 
 ---
-
+``
 ## The Approval Flow
 
 When your agent tries a gated action:
