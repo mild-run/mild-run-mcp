@@ -1,8 +1,10 @@
 # mild.run — Human Approval Gate for AI Agents
 
+[![smithery badge](https://smithery.ai/badge/dev-mild-run/mild-run)](https://smithery.ai/servers/dev-mild-run/mild-run)
+
 **Before your AI agent does anything irreversible — your tap required.**
 
-mild.run is an MCP server that intercepts sensitive AI agent actions (Stripe refunds, email sends, data deletes) and sends you a Telegram notification to approve or block before anything happens. Your agent has no credentials — the gate is enforced at the infrastructure level.
+mild.run is an MCP server that intercepts sensitive AI agent actions (Stripe refunds, email sends, data deletes) and sends you a notification (Telegram or email) to approve or block before anything happens. Your agent has no credentials — the gate is enforced at the infrastructure level.
 
 ---
 
@@ -22,14 +24,14 @@ Telling the agent to "ask before acting" doesn't work — you're asking a non-de
 
 1. **Sign up** at [mild.run](https://mild.run) — free
 2. **Connect Stripe** (paste your restricted API key — `charges:Read` + `refunds:Write` only)
-3. **Connect Telegram** (click a bot link → send one message → verified)
+3. **Connect Telegram** (click a bot link → send one message → verified) or use email approval
 4. **Paste your MCP URL** into your agent platform:
 
 ```
 https://mcp.mild.run/mcp?mcp_token=YOUR_TOKEN
 ```
 
-That's it. Every sensitive action now requires your tap on Telegram before it fires.
+That's it. Every sensitive action now requires your tap before it fires.
 
 ---
 
@@ -62,14 +64,14 @@ moved to Streamable HTTP yet, but it's deprecated — new integrations should
 use the `/mcp` URL above.
 
 ---
-``
+
 ## The Approval Flow
 
 When your agent tries a gated action:
 
 1. Agent calls the tool (e.g. `stripe_refund`)
-2. mild.run logs the request and immediately returns `"Approval sent via Telegram"` to the agent
-3. You receive a Telegram message on your phone:
+2. mild.run logs the request and immediately returns a confirmation to the agent
+3. You receive a notification (Telegram tap or email link) to approve or block:
 
 ```
 🌊 mild.run — Approval Required
