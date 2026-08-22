@@ -1,38 +1,38 @@
 {
   "name": "mild.run",
-  "description": "Human approval gate for AI agents. Intercepts Stripe, Gmail, and Slack actions — sends a Telegram tap to approve or block before anything executes. No code, no webhook, no SDK. Free tier: 30 approvals/month.",
+  "description": "Human approval gate for AI agents. Intercepts Stripe, Gmail, and Slack actions — sends a notification (Telegram or email) to approve or block before anything executes. No code, no webhook, no SDK. Free tier: 30 approvals/month.",
   "version": "1.0.0",
   "homepage": "https://mild.run",
   "license": "Proprietary",
   "authentication": {
     "required": true,
     "schemes": ["token"],
-    "description": "Your personal MCP token from mild.run/dashboard. Paste it as `mcp_token` in each tool call, or include it in the server URL: `https://mcp.mild.run/sse?mcp_token=YOUR_TOKEN`."
+    "description": "Your personal MCP token from mild.run/dashboard. Paste it as `mcp_token` in each tool call, or include it in the server URL: `https://mcp.mild.run/mcp?mcp_token=YOUR_TOKEN`."
   },
   "tools": [
     {
       "name": "stripe_refund",
-      "description": "Issue a Stripe refund — requires human approval via Telegram before executing."
+      "description": "Issue a Stripe refund — requires human approval before executing."
     },
     {
       "name": "stripe_subscription_cancel",
-      "description": "Cancel a Stripe subscription — requires human approval via Telegram before executing."
+      "description": "Cancel a Stripe subscription — requires human approval before executing."
     },
     {
       "name": "stripe_customer_delete",
-      "description": "Delete a Stripe customer — requires human approval via Telegram before executing."
+      "description": "Delete a Stripe customer — requires human approval before executing."
     },
     {
       "name": "stripe_payout",
-      "description": "Create a Stripe payout — requires human approval via Telegram before executing."
+      "description": "Create a Stripe payout — requires human approval before executing."
     },
     {
       "name": "gmail_send_email",
-      "description": "Send a Gmail message — requires human approval via Telegram before executing."
+      "description": "Send a Gmail message — requires human approval before executing."
     },
     {
       "name": "slack_post_message",
-      "description": "Send a Slack message — requires human approval via Telegram before executing."
+      "description": "Send a Slack message — requires human approval before executing."
     },
     {
       "name": "get_approval_status",
